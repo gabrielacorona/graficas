@@ -1,8 +1,9 @@
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.module.js';
 
-import {GLTFLoader} from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/GLTFLoader.js';
+import { RGBELoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/RGBELoader.js';
 
 let camera, scene, renderer;
 
@@ -12,14 +13,25 @@ init();
 render();
 
 function init() {
-    const loaderRosa = new GLTFLoader().setPath( 'assets-graficas/red_rose/' );
-    loaderRosa.load( 'scene.gltf', function ( gltf ) {
-        scene.add( gltf.scene );
-        const root =  gltf.scene
-        root.scale.set(0.4, 0.4, 0.4);
-        root.position.set(-1,-0.7,1);
-        render();
-    } );
+    new RGBELoader()
+        .setPath( 'assets-graficas/' )
+        .load( 'studio_country_hall_4k.hdr', function ( texture ) {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            scene.background = texture;
+            scene.environment = texture;
+            render();
+            // model
+            const loaderRosa = new GLTFLoader().setPath( 'assets-graficas/red_rose/' );
+            loaderRosa.load( 'scene.gltf', function ( gltf ) {
+                scene.add( gltf.scene );
+                const root =  gltf.scene
+                root.scale.set(0.4, 0.4, 0.4);
+                root.position.set(-1,-0.7,1);
+                render();
+            } );
+        } );
+
+    
     const loaderPot = new GLTFLoader().setPath( 'assets-graficas/flower_pot/' );
     loaderPot.load( 'scene.gltf', function ( gltf ) {
         scene.add( gltf.scene );
