@@ -1,80 +1,87 @@
 
-//import {GLTFLoader} from './three.js-master/examples/jsm/loaders/GLTFLoader.js'
-import {GLTFLoader} from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/GLTFLoader.js';
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
 
+import {GLTFLoader} from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js';
 
-const scene = new THREE.Scene();
-const loader = new GLTFLoader();
-
-
-loader.load( 'assets-graficas/red_rose/scene.gltf', function ( gltf ) {
-    console.log("rosa roja ", gltf)
-    const root =  gltf.scene
-    root.scale.set(0.9, 0.9, 0.9);
-    //root.position.set(1,1,1);
-
-	scene.add( root);
-
-}, undefined, function ( error ) {
-	console.error( "error rosa ",error );
-} );
-/*
-loader.load( 'assets-graficas/orchid_flower/scene.gltf', function ( gltf ) {
-    console.log("orchid ", gltf)
-    const root =  gltf.scene
-    root.scale.set(0.2, 0.2, 0.2);
-    //root.position.set(892,288);
-	scene.add( root);
-
-}, undefined, function ( error ) {
-	console.error( "error orchid ",error );
-} );
-
-loader.load( 'assets-graficas/flower_pot/scene.gltf', function ( gltf ) {
-    console.log("flower pot ", gltf)
-    const root =  gltf.scene
-    root.scale.set(0.9, 0.9, 0.9);
-	scene.add( root);
-
-}, undefined, function ( error ) {
-	console.error( "error flower pot ",error );
-} );
-
-loader.load( 'assets-graficas/tulip/scene.gltf', function ( gltf ) {
-    console.log("tulip ", gltf)
-    const root =  gltf.scene
-    root.scale.set(0.2, 0.2, 0.2);
-	scene.add( root);
-
-}, undefined, function ( error ) {
-	console.error( "error tulip ",error );
-} );
-*/
+let camera, scene, renderer;
 
 
-const light = new THREE.DirectionalLight(0xffffff,1)
-light.position.set(2,2,5)
-scene.add(light)
 
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+init();
+render();
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+function init() {
+    const loaderRosa = new GLTFLoader().setPath( 'assets-graficas/red_rose/' );
+    loaderRosa.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.4, 0.4, 0.4);
+        root.position.set(-1,-0.5,1);
+        render();
+    } );
 
-//creating cube
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-//scene.add( cube );
+    const loaderOrchid = new GLTFLoader().setPath( 'assets-graficas/orchid_flower/' );
+    loaderOrchid.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.2, 0.2, 0.2);
+        root.position.set(-1,-0.5,1);
+        render();
+    } );
 
-camera.position.z = 5;
+    const loaderTulip = new GLTFLoader().setPath( 'assets-graficas/tulip/' );
+    loaderTulip.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.2, 0.2, 0.2);
+        root.position.set(-1,-0.5,1);
+        render();
+    } );
 
-function animate() {
-    requestAnimationFrame( animate );
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    const loaderPot = new GLTFLoader().setPath( 'assets-graficas/flower_pot/' );
+    loaderPot.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.2, 0.2, 0.2);
+        root.position.set(-1,-0.5,1);
+        render();
+    } );
+
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.localClippingEnabled = true;
+    document.body.appendChild( renderer.domElement );
+
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 200 );
+
+    camera.position.set( - 1.5, 2.5, 3.0 );
+
+    const controls = new OrbitControls( camera, renderer.domElement );
+    controls.addEventListener( 'change', render ); // use only if there is no animation loop
+    controls.minDistance = 1;
+    controls.maxDistance = 10;
+    controls.enablePan = false;
+
+    const light = new THREE.HemisphereLight( 0xffffff, 0x080808, 1.5 );
+    light.position.set( - 1.25, 1, 1.25 );
+    scene.add( light );
+
+
+    window.addEventListener( 'resize', onWindowResize );
+
+}
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    render();
+}
+
+function render() {
     renderer.render( scene, camera );
 }
-animate();
