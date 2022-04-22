@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tulip
+* source:	https://sketchfab.com/3d-models/tulip-aec0943ae2184cd7aa43c04945952d70
+* author:	3Dee (https://sketchfab.com/mellydeeis)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tulip" (https://sketchfab.com/3d-models/tulip-aec0943ae2184cd7aa43c04945952d70) by 3Dee (https://sketchfab.com/mellydeeis) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

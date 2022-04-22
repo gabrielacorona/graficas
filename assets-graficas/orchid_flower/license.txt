@@ -1,0 +1,11 @@
+Model Information:
+* title:	Orchid flower
+* source:	https://sketchfab.com/3d-models/orchid-flower-75d19624c0d04b65975e011a04ae77a0
+* author:	Lassi Kaukonen (https://sketchfab.com/thesidekick)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Orchid flower" (https://sketchfab.com/3d-models/orchid-flower-75d19624c0d04b65975e011a04ae77a0) by Lassi Kaukonen (https://sketchfab.com/thesidekick) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

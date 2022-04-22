@@ -1,0 +1,11 @@
+Model Information:
+* title:	Flower Pot
+* source:	https://sketchfab.com/3d-models/flower-pot-818ca483b9d74fa2aa84e4210739f990
+* author:	empierz (https://sketchfab.com/empierz)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Flower Pot" (https://sketchfab.com/3d-models/flower-pot-818ca483b9d74fa2aa84e4210739f990) by empierz (https://sketchfab.com/empierz) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
