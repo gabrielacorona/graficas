@@ -27,15 +27,17 @@ function init() {
                 const root =  gltf.scene
                 root.scale.set(0.4, 0.4, 0.4);
                 root.position.set(-10,-10,-10);
-
+                root.visible = false;
                 document.addEventListener('keydown', function(event) {
                     if(event.keyCode == 37) {
                         console.log('Left key was pressed');
                         root.position.set(-1,-0.7,1);
+                        root.visible= true;
                         render()
                     }else if (event.keyCode == 39){
                         console.log("right key was pressed")
-                        root.position.set(-10,-10,-10);
+                        root.position.set(-100,-100,-100);
+                        root.visible =false;
                         render()
                     }
                 });
@@ -59,14 +61,17 @@ function init() {
         const root =  gltf.scene
         root.scale.set(0.09, 0.09, 0.09);
         root.position.set(-10,-10,-10);
+        root.visible = false;
         document.addEventListener('keydown', function(event) {
             if(event.keyCode == 38) {
                 console.log('key up was pressed');
                 root.position.set(-0.5,-0.4,1);
+                root.visible = true;
                 render()
             }else if (event.keyCode == 40){
                 console.log("key down was pressed")
                 root.position.set(-10,-10,-10);
+                root.visible = false;
                 render()
             }
         });
@@ -88,14 +93,17 @@ function init() {
         const root =  gltf.scene
         root.scale.set(0.04, 0.04, 0.04);
         root.position.set(-10,-10,-10);
+        root.visible = false;
         document.addEventListener('keydown', function(event) {
             if(event.keyCode == 80) {
                 console.log('P key  was pressed');
                 root.position.set(-0.0000009,0.5,1);
+                root.visible = true;
                 render()
             }else if (event.keyCode == 79){
                 console.log(" O key was pressed")
                 root.position.set(-10,-10,-10);
+                root.visible = false;
                 render()
             }
         });
