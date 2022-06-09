@@ -29,13 +29,13 @@ function init() {
                 root.position.set(-10,-10,-10);
                 root.visible = false;
                 document.addEventListener('keydown', function(event) {
-                    if(event.keyCode == 37) {
-                        console.log('Left key was pressed');
+                    if(event.keyCode == 85) {
+                        console.log('U key was pressed');
                         root.position.set(-1,-0.7,1);
                         root.visible= true;
                         render()
-                    }else if (event.keyCode == 39){
-                        console.log("right key was pressed")
+                    }else if (event.keyCode == 73){
+                        console.log("I key was pressed")
                         root.position.set(-100,-100,-100);
                         root.visible =false;
                         render()
@@ -63,13 +63,13 @@ function init() {
         root.position.set(-10,-10,-10);
         root.visible = false;
         document.addEventListener('keydown', function(event) {
-            if(event.keyCode == 38) {
-                console.log('key up was pressed');
+            if(event.keyCode == 84) {
+                console.log('T  was pressed');
                 root.position.set(-0.5,-0.4,1);
                 root.visible = true;
                 render()
-            }else if (event.keyCode == 40){
-                console.log("key down was pressed")
+            }else if (event.keyCode == 89){
+                console.log("Y  was pressed")
                 root.position.set(-10,-10,-10);
                 root.visible = false;
                 render()
