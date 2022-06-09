@@ -26,14 +26,26 @@ function init() {
                 scene.add( gltf.scene );
                 const root =  gltf.scene
                 root.scale.set(0.4, 0.4, 0.4);
-                root.position.set(-1,-0.7,1);
+                root.position.set(-10,-10,-10);
+
+                document.addEventListener('keydown', function(event) {
+                    if(event.keyCode == 37) {
+                        console.log('Left key was pressed');
+                        root.position.set(-1,-0.7,1);
+                        render()
+                    }else if (event.keyCode == 39){
+                        console.log("right key was pressed")
+                        root.position.set(-10,-10,-10);
+                        render()
+                    }
+                });
                 render();
             } );
         } );
 
     
-    const loaderPot = new GLTFLoader().setPath( 'assets-graficas/flower_pot/' );
-    loaderPot.load( 'scene.gltf', function ( gltf ) {
+    const potRosa = new GLTFLoader().setPath( 'assets-graficas/flower_pot/' );
+    potRosa.load( 'scene.gltf', function ( gltf ) {
         scene.add( gltf.scene );
         const root =  gltf.scene
         root.scale.set(0.2, 0.2, 0.2);
@@ -41,23 +53,63 @@ function init() {
         render();
     } );
 
-    // const loaderOrchid = new GLTFLoader().setPath( 'assets-graficas/orchid_flower/' );
-    // loaderOrchid.load( 'scene.gltf', function ( gltf ) {
-    //     scene.add( gltf.scene );
-    //     const root =  gltf.scene
-    //     root.scale.set(0.2, 0.2, 0.2);
-    //     root.position.set(-1,-0.5,1);
-    //     render();
-    // } );
+    const loaderOrchid = new GLTFLoader().setPath( 'assets-graficas/orchid_flower/' );
+    loaderOrchid.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.09, 0.09, 0.09);
+        root.position.set(-10,-10,-10);
+        document.addEventListener('keydown', function(event) {
+            if(event.keyCode == 38) {
+                console.log('key up was pressed');
+                root.position.set(-0.5,-0.4,1);
+                render()
+            }else if (event.keyCode == 40){
+                console.log("key down was pressed")
+                root.position.set(-10,-10,-10);
+                render()
+            }
+        });
+        render();
+    } );
+    
+    const potOrchid = new GLTFLoader().setPath( 'assets-graficas/flower_pot/' );
+    potOrchid.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.2, 0.2, 0.2);
+        root.position.set(-0.5,-0.5,1);
+        render();
+    } );
 
-    // const loaderTulip = new GLTFLoader().setPath( 'assets-graficas/tulip/' );
-    // loaderTulip.load( 'scene.gltf', function ( gltf ) {
-    //     scene.add( gltf.scene );
-    //     const root =  gltf.scene
-    //     root.scale.set(0.2, 0.2, 0.2);
-    //     root.position.set(-1,-0.5,1);
-    //     render();
-    // } );
+    const loaderTulip = new GLTFLoader().setPath( 'assets-graficas/tulip/' );
+    loaderTulip.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.04, 0.04, 0.04);
+        root.position.set(-10,-10,-10);
+        document.addEventListener('keydown', function(event) {
+            if(event.keyCode == 80) {
+                console.log('P key  was pressed');
+                root.position.set(-0.0000009,0.5,1);
+                render()
+            }else if (event.keyCode == 79){
+                console.log(" O key was pressed")
+                root.position.set(-10,-10,-10);
+                render()
+            }
+        });
+        render();
+    } );
+
+    const potTulip = new GLTFLoader().setPath( 'assets-graficas/flower_pot/' );
+    potTulip.load( 'scene.gltf', function ( gltf ) {
+        scene.add( gltf.scene );
+        const root =  gltf.scene
+        root.scale.set(0.2, 0.2, 0.2);
+        root.position.set(-0.0000009,-0.5,1);
+        render();
+    } );
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -84,20 +136,6 @@ function init() {
 
     window.addEventListener( 'resize', onWindowResize );
     
-    document.addEventListener('keydown', function(event) {
-        if(event.keyCode == 37) {
-            console.log('Left key was pressed');
-    //Cube.position.x +=1;
-        }else if(event.keyCode == 38) {
-            console.log('Up key was pressed');
-        }else if(event.keyCode == 40) {
-            console.log('Down key was pressed');
-        }
-        else if(event.keyCode == 39) {
-            console.log('Right key was pressed');
-    //Cube.position.x -=1;
-        }
-    });
 }
 
 function onWindowResize() {
