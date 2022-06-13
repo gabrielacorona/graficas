@@ -1,10 +1,10 @@
 
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.module.js';
 
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/GLTFLoader.js';
+import { RGBELoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/RGBELoader.js';
 import { GUI } from 'https://cdn.jsdelivr.net/npm/three@0.139.2/examples/jsm/libs/lil-gui.module.min.js';
-import {GLTFLoader} from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js';
-import { RGBELoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/RGBELoader.js";
 
 
 let camera, scene, renderer, spotLight;
