@@ -4,8 +4,10 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.m
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/RGBELoader.js';
+import { GUI } from 'https://cdn.jsdelivr.net/npm/three@0.139.2/examples/jsm/libs/lil-gui.module.min.js';
 
 let camera, scene, renderer;
+let effectController;
 
 
 
@@ -95,13 +97,13 @@ function init() {
         root.position.set(-10,-10,-10);
         root.visible = false;
         document.addEventListener('keydown', function(event) {
-            if(event.keyCode == 80) {
-                console.log('P key  was pressed');
+            if(event.keyCode == 79) {
+                console.log('O key  was pressed');
                 root.position.set(-0.0000009,0.5,1);
                 root.visible = true;
                 render()
-            }else if (event.keyCode == 79){
-                console.log(" O key was pressed")
+            }else if (event.keyCode == 80){
+                console.log(" P key was pressed")
                 root.position.set(-10,-10,-10);
                 root.visible = false;
                 render()
@@ -143,7 +145,7 @@ function init() {
 
 
     window.addEventListener( 'resize', onWindowResize );
-    
+    setupGui()
 }
 
 function onWindowResize() {
@@ -152,7 +154,26 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
     render();
 }
+function setupGui() {
+    effectController = {
+        tButton: "Mostrar Orquída",
+        yButton: "Esconder Orquída",
+        uButton: "Mostrar Rosa",
+        iButton: "Esconder Rosa",
+        oButton: "Mostrar Tulipán",
+        pButton: "Esconder Tulipán"
+    };
 
+    const gui = new GUI();
+    gui.add( effectController, 'tButton').name( ' Botón T ' )
+    gui.add( effectController, 'yButton').name( ' Botón Y ' )
+    gui.add( effectController, 'uButton').name( ' Botón U ' )
+    gui.add( effectController, 'iButton').name( ' Botón I ' )
+    gui.add( effectController, 'oButton').name( ' Botón O ' )
+    gui.add( effectController, 'pButton').name( ' Botón P ' )
+
+
+}
 function render() {
     renderer.render( scene, camera );
 }

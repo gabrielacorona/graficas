@@ -1,0 +1,20 @@
+    body{ 
+        margin: 0; 
+    }
+
+#container{
+    display: flex;
+    justify-content: center;
+    }
+
+    #info {
+    position: absolute;
+    top: 0px;
+    color: black;
+    width: 100;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(225, 225, 225, .5)
+    }
