@@ -1,12 +1,13 @@
 
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.module.js';
 
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/GLTFLoader.js';
-import { RGBELoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/RGBELoader.js';
 import { GUI } from 'https://cdn.jsdelivr.net/npm/three@0.139.2/examples/jsm/libs/lil-gui.module.min.js';
+import {GLTFLoader} from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js';
+import { RGBELoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/RGBELoader.js";
 
-let camera, scene, renderer;
+
+let camera, scene, renderer, spotLight;
 let effectController;
 
 
@@ -125,6 +126,8 @@ function init() {
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.localClippingEnabled = true;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     document.body.appendChild( renderer.domElement );
 
     scene = new THREE.Scene();
@@ -142,6 +145,21 @@ function init() {
     const light = new THREE.HemisphereLight( 0xffffff, 0x080808, 1.5 );
     light.position.set( - 1.25, 1, 1.25 );
     scene.add( light );
+
+    spotLight = new THREE.SpotLight( 0xffffff, 15 );
+    spotLight.position.set( 15, 40, 35 );
+    spotLight.angle = Math.PI / 4;
+    spotLight.penumbra = 0.1;
+    spotLight.decay = 2;
+    spotLight.distance = 200;
+
+    spotLight.castShadow = true;
+    spotLight.shadow.mapSize.width = 512;
+    spotLight.shadow.mapSize.height = 512;
+    spotLight.shadow.camera.near = 10;
+    spotLight.shadow.camera.far = 200;
+    spotLight.shadow.focus = 1;
+    scene.add( spotLight );
 
 
     window.addEventListener( 'resize', onWindowResize );
